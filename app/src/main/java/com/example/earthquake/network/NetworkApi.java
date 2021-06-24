@@ -5,7 +5,6 @@ import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -25,7 +24,9 @@ public abstract class NetworkApi implements IEnvironment {
     private OkHttpClient mOkHttpClient;
     private static boolean mIsFormal = true;
 
-
+    /**
+     * 初始化时根据mIsFormal决定使用什么Api
+     **/
     public NetworkApi() {
         if (!mIsFormal) {
             mBaseUrl = getTest();
@@ -80,6 +81,18 @@ public abstract class NetworkApi implements IEnvironment {
         };
     }
 
-//    protected abstract Interceptor getInterceptor();
+    @Override
+    public String getFormal() {
+        // TODO: 2021/6/24 正式环境后台
+        return null;
+    }
+
+    @Override
+    public String getTest() {
+        // TODO: 2021/6/24 测试环境后台
+        return null;
+    }
+
+    //    protected abstract Interceptor getInterceptor();
 
 }

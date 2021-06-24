@@ -2,6 +2,8 @@ package com.example.earthquake.network;
 
 import android.app.Application;
 
+import com.example.earthquake.BuildConfig;
+
 /**
  * @author : J-T
  * date   : 2021/6/21
@@ -31,6 +33,6 @@ public class NetworkRequiredInfo implements INetworkRequiredInfo {
 
     @Override
     public Application getApplicationContext() {
-        return mApplication;
+        return application;
     }
 }
